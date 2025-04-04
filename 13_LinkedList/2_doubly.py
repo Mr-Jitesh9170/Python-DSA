@@ -11,7 +11,7 @@ class LinkedList:
         self.size = 0
 
     # add first=>
-    def addFirst(self, data):
+    def appendLeft(self, data):
         newNode = Node(data)
         if self.head is None:
             self.head = self.tail = newNode
@@ -23,7 +23,7 @@ class LinkedList:
             self.size += 1
 
     # remove first=>
-    def removeFirst(self):
+    def popLeft(self):
         if self.head is None:
             return print("DLL is empty!")
         elif self.head.next == None:
@@ -39,7 +39,7 @@ class LinkedList:
             return removedData
 
     # add last=>
-    def addLast(self, data):
+    def appendRight(self, data):
         newNode = Node(data)
         if self.head == None:
             self.head = self.tail = newNode
@@ -51,7 +51,7 @@ class LinkedList:
             self.size += 1
 
     # remove last=>
-    def removeLast(self):
+    def popRight(self):
         if self.head == None and self.tail == None:
             return print("DLL is empty!")
         elif self.head.next == None:

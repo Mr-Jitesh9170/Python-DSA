@@ -9,7 +9,7 @@ class LinkedList:
         self.head = self.tail = None
 
     # add first=>
-    def addFirst(self, data):
+    def appendLeft(self, data):
         newNode = Node(data)
         if self.head == None:
             self.head = self.tail = newNode
@@ -18,7 +18,7 @@ class LinkedList:
         self.head = newNode
 
     # remove first=>
-    def removeFirst(self):
+    def popleft(self):
         if self.head is None:
             print("Linked list is Empty!")
         else:
@@ -27,7 +27,7 @@ class LinkedList:
             print("Removed Data->", removedData)
 
     # add last=>
-    def addLast(self, data):
+    def appendRight(self, data):
         newNode = Node(data)
         if self.head == None and self.tail == None:
             self.head = self.tail = newNode
@@ -36,7 +36,7 @@ class LinkedList:
             self.tail = newNode
 
     # remove last=>
-    def removeLast(self):
+    def popRight(self):
         if self.head == None:
             return print("Linked list is empty!")
 
