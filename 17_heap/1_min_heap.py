@@ -12,7 +12,6 @@
 
 minHeap = []
 
-
 # insertion in min heap =>
 def insertMinHeap(data):
     minHeap.append(data)
@@ -32,7 +31,6 @@ def insertMinHeap(data):
 
 minPriorityQueue = []
 
-
 def deleteMinHeap():
     if len(minHeap) == 0:
         return "Min heap is empty!"
@@ -43,18 +41,15 @@ def deleteMinHeap():
         deletedData = minHeap[0]
         minHeap[0] = minHeap.pop()
         minPriorityQueue.append(deletedData)
-
         i = 0
         while True:
             left = 2 * i + 1
             right = 2 * i + 2
             small = i
-
             if left < len(minHeap) and minHeap[left] < minHeap[small]:
                 small = left
             if right < len(minHeap) and minHeap[right] < minHeap[small]:
                 small = right
-
             if small != i:
                 minHeap[i], minHeap[small] = minHeap[small], minHeap[i]
                 i = small

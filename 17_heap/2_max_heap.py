@@ -11,7 +11,6 @@
 # 9. A Priority Queue can be implemented using either a Max Heap or a Min Heap, depending on whether we want maximum or minimum priority.
 
 
-
 # Operation in max heap =>
 # 1. Insert in max heap.
 # 2. Deletion in max heap.
@@ -77,6 +76,7 @@ def peekMaxHeap():
         return "Max heap is empty!"
     else:
         return maxHeap[0]
+
 
 insertMaxHeap(1)
 insertMaxHeap(2)
