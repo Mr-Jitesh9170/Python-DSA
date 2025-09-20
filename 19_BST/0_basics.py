@@ -12,4 +12,5 @@
 1) insertion
 2) deletion
 3) searching (mostly used for)
+5) 
 """
