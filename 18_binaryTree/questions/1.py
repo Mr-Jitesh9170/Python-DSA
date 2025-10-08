@@ -1,48 +1,56 @@
-""" 
-Remove Half Nodes
-Difficulty: EasyAccuracy: 59.67%Submissions: 42K+Points: 2Average Time: 20m
-You are given a binary tree and you need to remove all the half nodes (which have only one child). Return the root node of the modified tree after removing all the half-nodes.
+"""
+You are given the root of a binary tree, and your task is to return its top view. The top view of a binary tree is the set of nodes visible when the tree is viewed from the top.
 
-Note: The output will be judged by the inorder traversal of the resultant tree, inside the driver code.
+Note:
 
+Return the nodes from the leftmost node to the rightmost node.
+If multiple nodes overlap at the same horizontal position, only the topmost (closest to the root) node is included in the view.
 Examples:
 
-Input: tree = 5
-            /   \
-          7     8
-        / 
-      2
-Output: 2 5 8
-Explanation: In the above tree, the node 7 has only single child. After removing the node the tree becomes  2<-5->8. Hence, the answer is 2 5 8 & it is in inorder traversal.
-Input:  tree = 2   
-              / \   
-            7   5 
-Output: 7 2 5
-Explanation: Here there are no nodes which has only one child. So the tree remains same.
-Expected Time Complexity: O(n)
-Expected Auxiliary Space: O(height of the binary tree)
+Input: root = [1, 2, 3]
+Output: [2, 1, 3]
+Explanation: The Green colored nodes represents the top view in the below Binary tree.
+
+Input: root = [10, 20, 30, 40, 60, 90, 100]
+Output: [40, 20, 10, 30, 100]
+Explanation: The Green colored nodes represents the top view in the below Binary tree.
+
 
 Constraints:
-1<=number of nodes<=104
+1 ≤ number of nodes ≤ 105
+1 ≤ node->data ≤ 105
 
 """
 
-class Solution:
-    def RemoveHalfNodes(self, node): 
-        
-        def helper(temp):
-            if temp.left!=None:
-                if temp.left.left!=None and temp.left.right==None:
-                    temp.left=temp.left.left 
-                helper(temp.left)
-            if temp.left==None and temp.right==None:
-                print(temp.data,end=" ")       
-            if temp.right!=None: 
-                print(temp.data,end=" ")  
-                temp=temp.right  
-            print(temp.data,end=" ")    
-            
-        helper(node)        
+""" 
+                      6 
+                   N     2 
+                       8    3
+                    4     
+"""
 
-for a in [1, 2, 3, 4, 5]:
-    print(a, end=" ")    
+
+class Solution:
+    def topView(self, root):
+        arr = []
+
+        def leftHelper(temp, arr):
+            if temp.left != None:
+                leftHelper(temp.left, arr)
+            if root != temp:
+                arr.append(temp.data)
+            if len(arr)==0:
+                temp=temp.right.left
+                leftHelper(temp.left, arr) 
+            return arr
+
+        def rightHelper(temp, arr):
+            if temp.right != None:
+                arr.append(temp.right.data)
+                rightHelper(temp.right, arr)  
+            return arr
+
+        arr = leftHelper(root, arr)
+        arr.append(root.data)
+        arr = rightHelper(root, arr) 
+        return arr
