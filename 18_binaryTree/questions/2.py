@@ -19,6 +19,5 @@ Explanation:
 In the inverted tree, every non-leaf node has its left and right child interchanged.
 Constraints:
 1 ≤ number of nodes ≤ 104
-1 ≤ node->data ≤ 105
- 
+1 ≤ node->data ≤ 105 
 """
